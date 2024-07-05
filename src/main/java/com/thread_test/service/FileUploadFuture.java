@@ -1,26 +1,49 @@
 package com.thread_test.service;
-import org.eclipse.tags.shaded.org.apache.xpath.operations.Bool;
-import org.eclipse.tags.shaded.org.apache.xpath.operations.Mult;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.InputStream;
-import java.util.concurrent.Callable;
-import java.util.concurrent.Future;
-public class FileUploadFuture {
-    private Long start;
-    private InputStream inputStream;
-    private String filename;
 
-    public FileUploadFuture(InputStream inputStream, String filename){
+public class FileUploadFuture {
+    private long start;
+    private long uploadTime;
+    private final InputStream inputStream;
+    private final String filename;
+    private boolean isUploaded;
+
+    public FileUploadFuture(InputStream inputStream, String filename, boolean isUploaded) {
         this.inputStream = inputStream;
         this.filename = filename;
+        this.isUploaded = isUploaded;
     }
 
-    public InputStream getInputStream() {return this.inputStream;}
-    public String getFilename() {return filename;}
+    public boolean getIsUploaded() {
+        return isUploaded;
+    }
 
-    public void setStart(long time) {start = time;}
+    public void setIsUploaded(boolean isUploaded) {
+        this.isUploaded = isUploaded;
+    }
 
-    public Long getStartTime() {return start;}
+    public InputStream getInputStream() {
+        return inputStream;
+    }
 
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setStart(long time) {
+        this.start = time;
+    }
+
+    public long getStartTime() {
+        return start;
+    }
+
+    public long getUploadTime() {
+        return uploadTime;
+    }
+
+    public void setUploadTime(long uploadTime) {
+        this.uploadTime = uploadTime;
+    }
 }
